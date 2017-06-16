@@ -1,5 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Todo} from './todo';
+import { Http, Response, RequestOptions, RequestMethod, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+
+
 
 @Injectable()
 export class TodoDataService {
@@ -54,6 +58,7 @@ export class TodoDataService {
 
   // Toggle todo complete
   toggleTodoComplete(todo: Todo){
+    todo.complete = !todo.complete;
     let updatedTodo = this.updateTodoById(todo.id, {
       complete: !todo.complete
     });
